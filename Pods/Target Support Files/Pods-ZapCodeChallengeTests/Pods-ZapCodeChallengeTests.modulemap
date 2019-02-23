@@ -1,0 +1,6 @@
+framework module Pods_ZapCodeChallengeTests {
+  umbrella header "Pods-ZapCodeChallengeTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
