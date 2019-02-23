@@ -16,7 +16,7 @@ class HomeListCell: UICollectionViewCell {
     
     func setupFX() {
         // Info blur background FX
-        let blurEffect = UIBlurEffect(style: .prominent)
+        let blurEffect = UIBlurEffect(style: .extraLight)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame.size = self.infoContainer.frame.size
         self.infoContainer.insertSubview(blurEffectView, at: 0)
