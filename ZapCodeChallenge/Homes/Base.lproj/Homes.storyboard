@@ -116,6 +116,9 @@
                                 <segment title="Viva Real"/>
                                 <segment title="Zap"/>
                             </segments>
+                            <connections>
+                                <action selector="siteChanged:" destination="WvY-Ed-4z5" eventType="valueChanged" id="83v-UK-RwR"/>
+                            </connections>
                         </segmentedControl>
                     </navigationItem>
                     <connections>

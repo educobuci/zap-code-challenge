@@ -13,6 +13,13 @@ private let reuseIdentifier = "HomeCell"
 
 class HomesListViewController: UICollectionViewController {
     @IBOutlet weak var loadingView: UIActivityIndicatorView!
+    @IBAction func siteChanged(_ sender: UISegmentedControl) {
+        if(sender.selectedSegmentIndex == 0) {
+            self.presenter?.loadHomesList(site: .VivaReal)
+        } else {
+            self.presenter?.loadHomesList(site: .Zap)
+        }
+    }
     private var homeData: [Home]?
     private var presenter: HomesListPresenter?
     

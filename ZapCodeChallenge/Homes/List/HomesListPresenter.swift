@@ -33,11 +33,15 @@ class HomesListPresenter {
     }
     
     func filterZap(_ list: [Home]) -> [Home] {
-        return allData!
+        return allData!.filter({ (home) -> Bool in
+            Int(home.pricingInfos.price)! % 2 == 0
+        })
     }
     
     func filterViva(_ list: [Home]) -> [Home] {
-        return allData!
+        return allData!.filter({ (home) -> Bool in
+            Int(home.pricingInfos.price)! % 2 == 1
+        })
     }
     
     private func loadAll(callback: (() -> Void)?) {
