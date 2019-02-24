@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Site {
+enum SiteType {
     case Zap
     case VivaReal
 }
