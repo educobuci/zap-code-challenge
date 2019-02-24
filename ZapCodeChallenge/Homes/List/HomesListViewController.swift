@@ -11,25 +11,26 @@ import SDWebImage
 
 private let reuseIdentifier = "HomeCell"
 
-class HomesListViewController: UICollectionViewController {
+class HomesListViewController: UICollectionViewController, HomesListView {
     @IBOutlet weak var loadingView: UIActivityIndicatorView!
     private var homeData: [Home]?
+    private var presenter: HomesListPresenter?
     
     override func viewDidLoad() {
         let url = URL(string: "http://grupozap-code-challenge.s3-website-us-east-1.amazonaws.com/sources/source-1.json")!
-        HomeService.loadAll(url: url, onSuccess: onDataLoaded, onError: onError)
+        self.presenter = HomesListPresenter(self, url: url)
+        self.presenter?.loadHomesList(type: "Viva")
     }
     
-    func onDataLoaded(_ data: [Home]) {
-        self.homeData = data
-        DispatchQueue.main.async {
-            self.loadingView.stopAnimating()
-            self.collectionView.reloadData()
-        }
+    func showHomesList(homeData: [Home]) {
+        self.homeData = homeData
+        self.loadingView.stopAnimating()
+        self.collectionView.reloadData()
     }
     
-    func onError(error: Error) {
+    func showError(error: Error) {
         // TODO: Implement the error hading
+        print(error)
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
