@@ -19,7 +19,7 @@ class HomesListViewController: UICollectionViewController, HomesListView {
     override func viewDidLoad() {
         let url = URL(string: "http://grupozap-code-challenge.s3-website-us-east-1.amazonaws.com/sources/source-1.json")!
         self.presenter = HomesListPresenter(self, url: url)
-        self.presenter?.loadHomesList(type: "Viva")
+        self.presenter?.loadHomesList(site: .VivaReal)
     }
     
     func showHomesList(homeData: [Home]) {

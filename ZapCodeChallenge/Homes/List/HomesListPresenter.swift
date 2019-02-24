@@ -18,12 +18,12 @@ class HomesListPresenter {
         self.serviceUrl = url
     }
     
-    func loadHomesList(type: String) {
+    func loadHomesList(site: Site) {
         loadAll {
             var filteredList: [Home] = []
-            if(type == "Zap") {
+            if(site == .Zap) {
                 filteredList = self.filterZap(self.allData!)
-            } else if(type == "Viva") {
+            } else if(site == .VivaReal) {
                 filteredList = self.filterViva(self.allData!)
             }
             DispatchQueue.main.async {
