@@ -42,4 +42,14 @@ class ZapCodeChallengeTests: XCTestCase {
         XCTAssertEqual(filtered.count, 1)
         XCTAssertEqual(filtered.first!.pricingInfos.price, "700000")
     }
+    func testLonTatZero() {
+        let zeroCoords = Fixtures.genHomeBy(geoLocation: GeoLocation(precision: "", location: Location(lon: 0, lat: 0)))
+        let oneCoords = Fixtures.genHomeBy(geoLocation: GeoLocation(precision: "", location: Location(lon: 1, lat: 1)))
+        let homesList = [zeroCoords, oneCoords]
+        let filtered = SiteBusinessRule.filter(homesList: homesList)
+        let location = filtered.first!.address.geoLocation?.location
+        XCTAssertEqual(filtered.count, 1)
+        XCTAssertEqual(location?.lat!, 1)
+        XCTAssertEqual(location?.lon!, 1)
+    }
 }

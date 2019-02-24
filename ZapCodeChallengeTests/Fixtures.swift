@@ -10,13 +10,16 @@ import XCTest
 @testable import ZapCodeChallenge
 
 class Fixtures {
-    static func genHomeBy(businessType: BusinessType, price: String) -> Home {
+    static func genHomeBy(
+        businessType: BusinessType = .rental,
+        price: String = "",
+        geoLocation: GeoLocation? = nil) -> Home {
         return Home (
             usableAreas: 70,
             id: "",
             parkingSpaces: 0,
             images: [],
-            address: Address(city: nil, neighborhood: nil, geoLocation: nil),
+            address: Address(city: nil, neighborhood: nil, geoLocation: geoLocation),
             bathrooms: 1,
             bedrooms: 1,
             pricingInfos: PrincingInfos(

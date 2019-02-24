@@ -9,12 +9,14 @@
 import Foundation
 
 class SiteBusinessRule {
-    static func filter(homesList: [Home], bySiteType: SiteType) -> [Home] {
-        var result: [Home] = []
-        if(bySiteType == .Zap) {
-            result = filterZap(homesList)
-        } else if (bySiteType == .VivaReal){
-            result = filterViva(homesList)
+    static func filter(homesList: [Home], bySiteType: SiteType? = nil) -> [Home] {
+        var result: [Home] = homesList
+        if let type = bySiteType {
+            if(type == .Zap) {
+                result = filterZap(homesList)
+            } else if (bySiteType == .VivaReal) {
+                result = filterViva(homesList)
+            }
         }
         return result
     }
