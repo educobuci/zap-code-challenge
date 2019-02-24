@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		428988661D46F714B2DBB059 /* Pods_ZapCodeChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CB79EA6CDC510639064A817 /* Pods_ZapCodeChallenge.framework */; };
 		4336FF7C7C04D40FE22DF5C5 /* Pods_ZapCodeChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 340E414614D902824FB79A85 /* Pods_ZapCodeChallengeTests.framework */; };
+		8792E7472221E3C100060542 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8792E7462221E3C100060542 /* Home.swift */; };
+		8792E7492221E61D00060542 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8792E7482221E61D00060542 /* Address.swift */; };
+		8792E74B2221E65D00060542 /* GeoLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8792E74A2221E65D00060542 /* GeoLocation.swift */; };
+		8792E74D2221E68F00060542 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8792E74C2221E68F00060542 /* Location.swift */; };
+		8792E74F2221E6FC00060542 /* PricingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8792E74E2221E6FC00060542 /* PricingInfo.swift */; };
+		8792E7512221E7BB00060542 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8792E7502221E7BB00060542 /* Parser.swift */; };
+		8792E75622222AA000060542 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8792E75522222AA000060542 /* HomeService.swift */; };
 		87A658FB2221935E00B86CF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A658FA2221935E00B86CF6 /* AppDelegate.swift */; };
 		87A659002221935E00B86CF6 /* Homes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87A658FE2221935E00B86CF6 /* Homes.storyboard */; };
 		87A659022221935F00B86CF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87A659012221935F00B86CF6 /* Assets.xcassets */; };
@@ -33,6 +40,13 @@
 		340E414614D902824FB79A85 /* Pods_ZapCodeChallengeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZapCodeChallengeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		54D309054027FB1A40BDD6F6 /* Pods-ZapCodeChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZapCodeChallenge.debug.xcconfig"; path = "Target Support Files/Pods-ZapCodeChallenge/Pods-ZapCodeChallenge.debug.xcconfig"; sourceTree = "<group>"; };
 		619C5A445674A86998ED915F /* Pods-ZapCodeChallengeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZapCodeChallengeTests.debug.xcconfig"; path = "Target Support Files/Pods-ZapCodeChallengeTests/Pods-ZapCodeChallengeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8792E7462221E3C100060542 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		8792E7482221E61D00060542 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		8792E74A2221E65D00060542 /* GeoLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoLocation.swift; sourceTree = "<group>"; };
+		8792E74C2221E68F00060542 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		8792E74E2221E6FC00060542 /* PricingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricingInfo.swift; sourceTree = "<group>"; };
+		8792E7502221E7BB00060542 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		8792E75522222AA000060542 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
 		87A658F72221935E00B86CF6 /* ZapCodeChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZapCodeChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87A658FA2221935E00B86CF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87A658FF2221935E00B86CF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Homes.storyboard; sourceTree = "<group>"; };
@@ -88,6 +102,27 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		8792E7452221E39D00060542 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8792E7482221E61D00060542 /* Address.swift */,
+				8792E74A2221E65D00060542 /* GeoLocation.swift */,
+				8792E7462221E3C100060542 /* Home.swift */,
+				8792E74C2221E68F00060542 /* Location.swift */,
+				8792E7502221E7BB00060542 /* Parser.swift */,
+				8792E74E2221E6FC00060542 /* PricingInfo.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8792E7542221EEF600060542 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				8792E75522222AA000060542 /* HomeService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		87A658EE2221935E00B86CF6 = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +149,8 @@
 				87A658FA2221935E00B86CF6 /* AppDelegate.swift */,
 				87A6591D222199C000B86CF6 /* Config */,
 				87A6591A2221994200B86CF6 /* Homes */,
+				8792E7452221E39D00060542 /* Models */,
+				8792E7542221EEF600060542 /* Services */,
 				87A6591B2221998B00B86CF6 /* Shared */,
 			);
 			path = ZapCodeChallenge;
@@ -157,8 +194,8 @@
 		87A659232221A2FF00B86CF6 /* List */ = {
 			isa = PBXGroup;
 			children = (
-				87A659212221A04900B86CF6 /* HomesListViewController.swift */,
 				87A659242221A35A00B86CF6 /* HomeListCell.swift */,
+				87A659212221A04900B86CF6 /* HomesListViewController.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -336,9 +373,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8792E74B2221E65D00060542 /* GeoLocation.swift in Sources */,
 				87A658FB2221935E00B86CF6 /* AppDelegate.swift in Sources */,
 				87A659222221A04900B86CF6 /* HomesListViewController.swift in Sources */,
+				8792E7472221E3C100060542 /* Home.swift in Sources */,
+				8792E74F2221E6FC00060542 /* PricingInfo.swift in Sources */,
+				8792E7512221E7BB00060542 /* Parser.swift in Sources */,
 				87A659252221A35A00B86CF6 /* HomeListCell.swift in Sources */,
+				8792E75622222AA000060542 /* HomeService.swift in Sources */,
+				8792E7492221E61D00060542 /* Address.swift in Sources */,
+				8792E74D2221E68F00060542 /* Location.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

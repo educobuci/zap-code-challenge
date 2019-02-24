@@ -11,12 +11,16 @@ import UIKit
 class HomeListCell: UICollectionViewCell {
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var infoContainer: UIView!
-    var fxDone = false
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var characteristicsLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    
+    var isFXDone = false
     var radius = 10
     
     func setupFX() {
         // Info blur background FX
-        let blurEffect = UIBlurEffect(style: .extraLight)
+        let blurEffect = UIBlurEffect(style: .prominent)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame.size = self.infoContainer.frame.size
         self.infoContainer.insertSubview(blurEffectView, at: 0)
@@ -24,6 +28,6 @@ class HomeListCell: UICollectionViewCell {
         self.layer.cornerRadius = CGFloat(radius)
         self.clipsToBounds = true
         self.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-        fxDone = true
+        isFXDone = true
     }
 }

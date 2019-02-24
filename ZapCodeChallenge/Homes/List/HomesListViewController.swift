@@ -7,58 +7,66 @@
 //
 
 import UIKit
+import SDWebImage
 
 private let reuseIdentifier = "HomeCell"
 
 class HomesListViewController: UICollectionViewController {
-
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//    }
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 400
-//    }
-//
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        return 1
-//    }
-//
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)!
-//        cell.imageView?.image = UIImage(named: "home")
-//        cell.textLabel?.text = String(indexPath.item)
-//        return cell
-//    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+    @IBOutlet weak var loadingView: UIActivityIndicatorView!
+    private var homeData: [Home]?
+    
+    override func viewDidLoad() {
+        let url = URL(string: "http://grupozap-code-challenge.s3-website-us-east-1.amazonaws.com/sources/source-1.json")!
+        HomeService.loadAll(url: url, onSuccess: onDataLoaded, onError: onError)
     }
-    */
+    
+    func onDataLoaded(_ data: [Home]) {
+        self.homeData = data
+        DispatchQueue.main.async {
+            self.loadingView.stopAnimating()
+            self.collectionView.reloadData()
+        }
+    }
+    
+    func onError(error: Error) {
+        // TODO: Implement the error hading
+    }
 
-    // MARK: UICollectionViewDataSource
-
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return homeData?.count ?? 0
+    }
+    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 10
-    }
-
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let home = self.homeData![indexPath.item]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! HomeListCell
-        if(!cell.fxDone) {
+        if(!cell.isFXDone) {
             cell.setupFX()
         }
+        cell.priceLabel.text = "Á venda R$\(home.pricingInfos!.price!)"
+        cell.characteristicsLabel.text = formatCharacteristics(home: home)
+        if let firstImage = home.images.first {
+            cell.image.sd_setImage(with: URL(string: firstImage))
+        }
         return cell
+    }
+    
+    private func formatCharacteristics(home: Home) -> String {
+        let rooms = "\(pluralize(scalar: home.bedrooms, term: "quarto"))"
+        let baths = "\(pluralize(scalar: home.bathrooms, term: "banheiro"))"
+        let area = "\(home.usableAreas)m²"
+        let parking = "\(pluralize(scalar:(home.parkingSpaces ?? 0), term: "vaga"))"
+        return "\(rooms)・\(baths)・\(area)・\(parking)"
+    }
+    
+    func pluralize(scalar: Int, term: String) -> String {
+        let sentence = "\(scalar) \(term)"
+        if(scalar != 1) {
+            return "\(sentence)s"
+        }
+        return sentence
     }
 }
