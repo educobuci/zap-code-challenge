@@ -28,6 +28,12 @@ class SiteBusinessRule {
         })
     }
     private static func filterViva(_ homesList: [Home]) -> [Home] {
-        return []
+        return homesList.filter({ (home) -> Bool in
+            let rentalRule = home.pricingInfos.businessType == .rental &&
+                Int(home.pricingInfos.price)! <= 4000
+            let saleRule = home.pricingInfos.businessType == .sale &&
+                Int(home.pricingInfos.price)! <= 700000
+            return rentalRule || saleRule
+        })
     }
 }
