@@ -8,9 +8,14 @@
 
 import Foundation
 
-class PrincingInfos: Decodable {
-    var yearlyIptu: String?
-    var price: String?
-    var businessType: String?
-    var monthlyCondoFee: String?
+enum BusinessType: String, Decodable {
+    case sale = "SALE"
+    case rental = "RENTAL"
+}
+
+struct PrincingInfos: Decodable {
+    let yearlyIptu: String?
+    let price: String
+    let businessType: BusinessType
+    let monthlyCondoFee: String?
 }

@@ -13,8 +13,8 @@ struct Home: Decodable {
     let id: String?
     let parkingSpaces: Int?
     let images: [String]
-    let address: Address?
+    let address: Address
     let bathrooms: Int
     let bedrooms: Int
-    let pricingInfos: PrincingInfos?
+    let pricingInfos: PrincingInfos
 }

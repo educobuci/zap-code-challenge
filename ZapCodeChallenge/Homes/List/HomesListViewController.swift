@@ -11,7 +11,7 @@ import SDWebImage
 
 private let reuseIdentifier = "HomeCell"
 
-class HomesListViewController: UICollectionViewController, HomesListView {
+class HomesListViewController: UICollectionViewController {
     @IBOutlet weak var loadingView: UIActivityIndicatorView!
     private var homeData: [Home]?
     private var presenter: HomesListPresenter?
@@ -35,39 +35,41 @@ class HomesListViewController: UICollectionViewController, HomesListView {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return homeData?.count ?? 0
-    }
-    
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
+    }    
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let home = self.homeData![indexPath.item]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! HomeListCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! HomeCell
         if(!cell.isFXDone) {
             cell.setupFX()
         }
-        cell.priceLabel.text = "Á venda R$\(home.pricingInfos!.price!)"
-        cell.characteristicsLabel.text = formatCharacteristics(home: home)
+        if(home.pricingInfos.businessType == .rental) {
+            cell.priceLabel.text = "\(Strings.FOR_RENT) \(Strings.formatBRL(home.pricingInfos.price))"
+        } else {
+            cell.priceLabel.text = "\(Strings.FOR_SALE) \(Strings.formatBRL(home.pricingInfos.price))"
+        }
+        cell.characteristicsLabel.text = formatCharacteristics(home)
         if let firstImage = home.images.first {
             cell.image.sd_setImage(with: URL(string: firstImage))
         }
+        cell.addressLabel.text = formatAddress(home.address)
         return cell
     }
     
-    private func formatCharacteristics(home: Home) -> String {
-        let rooms = "\(pluralize(scalar: home.bedrooms, term: "quarto"))"
-        let baths = "\(pluralize(scalar: home.bathrooms, term: "banheiro"))"
+    private func formatCharacteristics(_ home: Home) -> String {
+        let rooms = "\(Strings.pluralize(scalar: home.bedrooms, term: Strings.BEDROOM))"
+        let baths = "\(Strings.pluralize(scalar: home.bathrooms, term: Strings.BATHROOM))"
         let area = "\(home.usableAreas)m²"
-        let parking = "\(pluralize(scalar:(home.parkingSpaces ?? 0), term: "vaga"))"
+        let parking = "\(Strings.pluralize(scalar:(home.parkingSpaces ?? 0), term: Strings.PARKING_SPACE))"
         return "\(rooms)・\(baths)・\(area)・\(parking)"
     }
     
-    func pluralize(scalar: Int, term: String) -> String {
-        let sentence = "\(scalar) \(term)"
-        if(scalar != 1) {
-            return "\(sentence)s"
+    private func formatAddress(_ address: Address) -> String {
+        if let neighborhood = address.neighborhood, let city = address.city {
+            if(!neighborhood.isEmpty && !city.isEmpty) {
+                return "\(neighborhood)・\(city)"
+            }
         }
-        return sentence
+        return ""
     }
 }

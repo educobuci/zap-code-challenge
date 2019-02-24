@@ -9,11 +9,11 @@
 import Foundation
 
 class HomesListPresenter {
-    let homesListView: HomesListView
+    let homesListView: HomesListViewController?
     let serviceUrl: URL
     var allData: [Home]?
     
-    init(_ view: HomesListView, url: URL) {
+    init(_ view: HomesListViewController?, url: URL) {
         self.homesListView = view
         self.serviceUrl = url
     }
@@ -27,7 +27,7 @@ class HomesListPresenter {
                 filteredList = self.filterViva(self.allData!)
             }
             DispatchQueue.main.async {
-                self.homesListView.showHomesList(homeData: filteredList)
+                self.homesListView?.showHomesList(homeData: filteredList)
             }
         }
     }
@@ -40,15 +40,14 @@ class HomesListPresenter {
         return allData!
     }
     
-    private
-    func loadAll(callback: (() -> Void)?) {
+    private func loadAll(callback: (() -> Void)?) {
         if(self.allData != nil) {
             callback?()
         } else {
             RestService.loadList(
                 url: self.serviceUrl,
                 onSuccess: { (data: [Home]) in self.allData = data; callback?() },
-                onError: self.homesListView.showError)
+                onError: self.homesListView?.showError)
         }
     }
 }
