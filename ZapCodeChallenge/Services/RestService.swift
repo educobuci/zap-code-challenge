@@ -8,16 +8,16 @@
 
 import Foundation
 
-class HomeService {
-    static func loadAll(url: URL, onSuccess: @escaping ([Home]) -> Void, onError: ((Error) -> Void)?) {
+class RestService {
+    static func loadList<T: Decodable>(url: URL, onSuccess: @escaping ([T]) -> Void, onError: ((Error) -> Void)?) {
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             if error != nil {
                 print(error!.localizedDescription)
             }
             guard let data = data else { return }
             do {
-                let homeData = try JSONDecoder().decode([Home].self, from: data)
-                onSuccess(homeData)
+                let decoded = try JSONDecoder().decode([T].self, from: data)
+                onSuccess(decoded)
             }
             catch let jsonError {
                 onError?(jsonError)

@@ -15,7 +15,7 @@
 		8792E74D2221E68F00060542 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8792E74C2221E68F00060542 /* Location.swift */; };
 		8792E74F2221E6FC00060542 /* PricingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8792E74E2221E6FC00060542 /* PricingInfo.swift */; };
 		8792E7512221E7BB00060542 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8792E7502221E7BB00060542 /* Parser.swift */; };
-		8792E75622222AA000060542 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8792E75522222AA000060542 /* HomeService.swift */; };
+		8792E75622222AA000060542 /* RestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8792E75522222AA000060542 /* RestService.swift */; };
 		8792E758222233BD00060542 /* HomesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8792E757222233BD00060542 /* HomesListPresenter.swift */; };
 		8792E75A222233DA00060542 /* HomesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8792E759222233DA00060542 /* HomesListView.swift */; };
 		87A658FB2221935E00B86CF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A658FA2221935E00B86CF6 /* AppDelegate.swift */; };
@@ -48,7 +48,7 @@
 		8792E74C2221E68F00060542 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		8792E74E2221E6FC00060542 /* PricingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricingInfo.swift; sourceTree = "<group>"; };
 		8792E7502221E7BB00060542 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
-		8792E75522222AA000060542 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
+		8792E75522222AA000060542 /* RestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestService.swift; sourceTree = "<group>"; };
 		8792E757222233BD00060542 /* HomesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomesListPresenter.swift; sourceTree = "<group>"; };
 		8792E759222233DA00060542 /* HomesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomesListView.swift; sourceTree = "<group>"; };
 		87A658F72221935E00B86CF6 /* ZapCodeChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZapCodeChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,7 +122,7 @@
 		8792E7542221EEF600060542 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				8792E75522222AA000060542 /* HomeService.swift */,
+				8792E75522222AA000060542 /* RestService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -387,7 +387,7 @@
 				8792E74F2221E6FC00060542 /* PricingInfo.swift in Sources */,
 				8792E7512221E7BB00060542 /* Parser.swift in Sources */,
 				87A659252221A35A00B86CF6 /* HomeListCell.swift in Sources */,
-				8792E75622222AA000060542 /* HomeService.swift in Sources */,
+				8792E75622222AA000060542 /* RestService.swift in Sources */,
 				8792E75A222233DA00060542 /* HomesListView.swift in Sources */,
 				8792E7492221E61D00060542 /* Address.swift in Sources */,
 				8792E74D2221E68F00060542 /* Location.swift in Sources */,

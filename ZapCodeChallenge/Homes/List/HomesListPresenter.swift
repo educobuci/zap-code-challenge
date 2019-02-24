@@ -45,9 +45,9 @@ class HomesListPresenter {
         if(self.allData != nil) {
             callback?()
         } else {
-            HomeService.loadAll(
+            RestService.loadList(
                 url: self.serviceUrl,
-                onSuccess: { (data) in self.allData = data; callback?() },
+                onSuccess: { (data: [Home]) in self.allData = data; callback?() },
                 onError: self.homesListView.showError)
         }
     }
