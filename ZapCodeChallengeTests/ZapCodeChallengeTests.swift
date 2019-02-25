@@ -73,4 +73,24 @@ class ZapCodeChallengeTests: XCTestCase {
         XCTAssertEqual(filtered.count, 1)
         XCTAssertEqual(filtered.first!.address.geoLocation?.location?.lon, ZapBoundingBox.maxlon)
     }
+    func testVivaCondoMaxValue() {
+        let rentCondo30Percent = Fixtures.genHomeWith(businessType: .rental, price: "1000", condoFee: "300")
+        let rentCondo20Percent = Fixtures.genHomeWith(businessType: .rental, price: "1000", condoFee: "200")
+        let rentCondoInvalid = Fixtures.genHomeWith(businessType: .rental, price: "1000", condoFee: "")
+        let homesList = [rentCondo30Percent, rentCondo20Percent, rentCondoInvalid]
+        let filtered = SiteBusinessRule.filter(homesList: homesList, bySiteType: .VivaReal)
+        XCTAssertEqual(filtered.count, 2)
+        XCTAssertEqual(filtered[0].pricingInfos.monthlyCondoFee, "200")
+        XCTAssertEqual(filtered[1].pricingInfos.monthlyCondoFee, "")
+    }
+    func testVivaCondoMaxValueInBounding() {
+        let inLocation = GeoLocation(precision: "", location: Location(lon: ZapBoundingBox.maxlon, lat: ZapBoundingBox.minlat))
+        let outLocation = GeoLocation(precision: "", location: Location(lon: ZapBoundingBox.maxlon + 1, lat: ZapBoundingBox.minlat - 1))
+        let rentCondo44PercentIn = Fixtures.genHomeWith(businessType: .rental, price: "1000", geoLocation: inLocation, condoFee: "440")
+        let rentCondo44PercentOut = Fixtures.genHomeWith(businessType: .rental, price: "1000", geoLocation: outLocation, condoFee: "440")
+        let homesList = [rentCondo44PercentIn, rentCondo44PercentOut]
+        let filtered = SiteBusinessRule.filter(homesList: homesList, bySiteType: .VivaReal)
+        XCTAssertEqual(filtered.count, 1)
+        XCTAssertEqual(filtered.first!.address.geoLocation?.location?.lon, ZapBoundingBox.maxlon)        
+    }
 }

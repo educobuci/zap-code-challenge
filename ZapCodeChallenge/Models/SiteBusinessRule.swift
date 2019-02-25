@@ -11,6 +11,8 @@ import Foundation
 class SiteBusinessRule {
     private static let zapMinRatio: Float = 3500
     private static let zapMinRatioInBounding: Float = zapMinRatio * 0.9
+    private static let vivaCondoFeeRatio: Float = 0.3 // 30%
+    private static let vivaCondoFeeRatioInBounding: Float = vivaCondoFeeRatio * 1.5 // + 50%
     
     static func filter(homesList: [Home], bySiteType: SiteType? = nil) -> [Home] {
         var rules: [(_ home:Home) -> Bool] = []
@@ -20,6 +22,7 @@ class SiteBusinessRule {
                 rules.append(filterZapMinAreasPriceRatio)
             } else if (bySiteType == .VivaReal) {
                 rules.append(filterViva)
+                rules.append(filterVivaMaxCondoFee)
             }
         }
         rules.append(filterZeroCords)
@@ -63,5 +66,21 @@ class SiteBusinessRule {
             }
         }
         return price / home.usableAreas > Int(ratio)
+    }
+    
+    private static func filterVivaMaxCondoFee(_ home: Home) -> Bool {
+        var ratio = vivaCondoFeeRatio
+        if let location = home.address.geoLocation?.location {
+            if(ZapBoundingBox.isInside(lon: location.lon!, lat: location.lat!)) {
+                ratio = vivaCondoFeeRatioInBounding
+            }
+        }
+        if let condoFee = Float(home.pricingInfos.monthlyCondoFee ?? "") {
+            if (home.pricingInfos.businessType == .rental) {
+                let price = Float(home.pricingInfos.price)!
+                return condoFee / price < ratio
+            }
+        }
+        return true
     }
 }
