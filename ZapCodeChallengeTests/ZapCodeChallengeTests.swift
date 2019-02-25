@@ -10,6 +10,7 @@ import XCTest
 @testable import ZapCodeChallenge
 
 class ZapCodeChallengeTests: XCTestCase {
+    // Zap Specifics
     func testZapMinRentValue() {
         let rent3k = Fixtures.genHomeBy(businessType: .rental, price: "3000")
         let rent3_5k = Fixtures.genHomeBy(businessType: .rental, price: "3500")
@@ -44,12 +45,22 @@ class ZapCodeChallengeTests: XCTestCase {
     }
     func testLonTatZero() {
         let zeroCoords = Fixtures.genHomeBy(geoLocation: GeoLocation(precision: "", location: Location(lon: 0, lat: 0)))
-        let oneCoords = Fixtures.genHomeBy(geoLocation: GeoLocation(precision: "", location: Location(lon: 1, lat: 1)))
+        let oneCoords = Fixtures.genHomeBy()
         let homesList = [zeroCoords, oneCoords]
         let filtered = SiteBusinessRule.filter(homesList: homesList)
         let location = filtered.first!.address.geoLocation?.location
         XCTAssertEqual(filtered.count, 1)
         XCTAssertEqual(location?.lat!, 1)
         XCTAssertEqual(location?.lon!, 1)
+    }
+    func testZapMinUsableAreasValue() {
+        let saleAreas170x600k = Fixtures.genHomeBy(usableAreas: 180, businessType: .sale, price: "600000")
+        let saleAreas150x600k = Fixtures.genHomeBy(usableAreas: 150, businessType: .sale, price: "600000")
+        let saleAreasZero = Fixtures.genHomeBy(usableAreas: 0, businessType: .sale, price: "600000")
+        let homesList = [saleAreas170x600k, saleAreas150x600k, saleAreasZero]
+        let filtered = SiteBusinessRule.filter(homesList: homesList, bySiteType: .Zap)
+        XCTAssertEqual(filtered.count, 2)
+        XCTAssertEqual(filtered[0].usableAreas, 150)
+        XCTAssertEqual(filtered[1].usableAreas, 0)
     }
 }

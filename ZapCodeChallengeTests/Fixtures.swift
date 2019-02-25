@@ -11,11 +11,12 @@ import XCTest
 
 class Fixtures {
     static func genHomeBy(
+        usableAreas: Int = 1,
         businessType: BusinessType = .rental,
         price: String = "",
         geoLocation: GeoLocation = defaultGeoLocation) -> Home {
         return Home (
-            usableAreas: 70,
+            usableAreas: usableAreas,
             id: "",
             parkingSpaces: 0,
             images: [],

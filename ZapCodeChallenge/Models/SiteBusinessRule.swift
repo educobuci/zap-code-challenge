@@ -14,6 +14,7 @@ class SiteBusinessRule {
         if let type = bySiteType {
             if(type == .Zap) {
                 rules.append(filterZap)
+                rules.append(filterZapMinAreasPriceRatio)
             } else if (bySiteType == .VivaReal) {
                 rules.append(filterViva)
             }
@@ -45,5 +46,14 @@ class SiteBusinessRule {
             return location.lat! != 0 && location.lon != 0
         }
         return false
+    }
+    
+    private static func filterZapMinAreasPriceRatio(_ home: Home) -> Bool {
+        if(home.pricingInfos.businessType != .sale || home.usableAreas == 0) {
+            return true
+        }
+        let price = Int(home.pricingInfos.price)!
+        let ratio = 3500
+        return price / home.usableAreas > ratio
     }
 }
