@@ -19,6 +19,9 @@ class HomesListViewController: UICollectionViewController {
         } else {
             self.presenter?.loadHomesList(site: .Zap)
         }
+        let topBarHeight = UIApplication.shared.statusBarFrame.size.height +
+            (self.navigationController?.navigationBar.frame.height ?? 0.0)
+        collectionView.setContentOffset(CGPoint(x: 0, y: -topBarHeight), animated: true)
     }
     private var homeData: [Home]?
     private var presenter: HomesListPresenter?

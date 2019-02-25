@@ -21,6 +21,7 @@
 		8792E762222251ED00060542 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8792E761222251ED00060542 /* Config.swift */; };
 		8792E764222339EF00060542 /* Fixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8792E763222339EF00060542 /* Fixtures.swift */; };
 		8792E76622233F6200060542 /* SiteBusinessRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8792E76522233F6200060542 /* SiteBusinessRule.swift */; };
+		8792E7682223996200060542 /* ZapBoundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8792E7672223996200060542 /* ZapBoundingBox.swift */; };
 		87A658FB2221935E00B86CF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A658FA2221935E00B86CF6 /* AppDelegate.swift */; };
 		87A659002221935E00B86CF6 /* Homes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87A658FE2221935E00B86CF6 /* Homes.storyboard */; };
 		87A659022221935F00B86CF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87A659012221935F00B86CF6 /* Assets.xcassets */; };
@@ -57,6 +58,7 @@
 		8792E761222251ED00060542 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		8792E763222339EF00060542 /* Fixtures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fixtures.swift; sourceTree = "<group>"; };
 		8792E76522233F6200060542 /* SiteBusinessRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteBusinessRule.swift; sourceTree = "<group>"; };
+		8792E7672223996200060542 /* ZapBoundingBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZapBoundingBox.swift; sourceTree = "<group>"; };
 		87A658F72221935E00B86CF6 /* ZapCodeChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZapCodeChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87A658FA2221935E00B86CF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87A658FF2221935E00B86CF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Homes.storyboard; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				8792E74E2221E6FC00060542 /* PricingInfo.swift */,
 				8792E76522233F6200060542 /* SiteBusinessRule.swift */,
 				8792E75B2222414C00060542 /* SiteType.swift */,
+				8792E7672223996200060542 /* ZapBoundingBox.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				8792E74F2221E6FC00060542 /* PricingInfo.swift in Sources */,
 				8792E762222251ED00060542 /* Config.swift in Sources */,
 				8792E7602222455F00060542 /* Strings.swift in Sources */,
+				8792E7682223996200060542 /* ZapBoundingBox.swift in Sources */,
 				8792E75C2222414C00060542 /* SiteType.swift in Sources */,
 				87A659252221A35A00B86CF6 /* HomeCell.swift in Sources */,
 				8792E75622222AA000060542 /* RestService.swift in Sources */,

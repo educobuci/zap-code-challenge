@@ -10,7 +10,7 @@ import XCTest
 @testable import ZapCodeChallenge
 
 class Fixtures {
-    static func genHomeBy(
+    static func genHomeWith(
         usableAreas: Int = 1,
         businessType: BusinessType = .rental,
         price: String = "",

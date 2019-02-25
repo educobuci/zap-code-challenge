@@ -9,6 +9,9 @@
 import Foundation
 
 class SiteBusinessRule {
+    private static let zapMinRatio: Float = 3500
+    private static let zapMinRatioInBounding: Float = zapMinRatio * 0.9
+    
     static func filter(homesList: [Home], bySiteType: SiteType? = nil) -> [Home] {
         var rules: [(_ home:Home) -> Bool] = []
         if let type = bySiteType {
@@ -53,7 +56,12 @@ class SiteBusinessRule {
             return true
         }
         let price = Int(home.pricingInfos.price)!
-        let ratio = 3500
-        return price / home.usableAreas > ratio
+        var ratio = zapMinRatio
+        if let location = home.address.geoLocation?.location {
+            if(ZapBoundingBox.isInside(lon: location.lon!, lat: location.lat!)) {
+                ratio = zapMinRatioInBounding
+            }
+        }
+        return price / home.usableAreas > Int(ratio)
     }
 }
