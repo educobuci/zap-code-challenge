@@ -13,7 +13,7 @@ class Fixtures {
     static func genHomeBy(
         businessType: BusinessType = .rental,
         price: String = "",
-        geoLocation: GeoLocation? = nil) -> Home {
+        geoLocation: GeoLocation = defaultGeoLocation) -> Home {
         return Home (
             usableAreas: 70,
             id: "",
@@ -26,4 +26,5 @@ class Fixtures {
                 yearlyIptu: nil, price: price, businessType: businessType, monthlyCondoFee: "")
         )
     }
+    private static let defaultGeoLocation = GeoLocation(precision: "ROOFTOP", location: Location(lon: 1, lat: 1))
 }
