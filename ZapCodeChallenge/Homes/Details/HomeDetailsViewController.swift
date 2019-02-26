@@ -21,7 +21,6 @@ class HomeDetailsViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var cityLabel: UILabel!
     
     var home: Home! = nil
-    //let imageHeight = CGFloat(300)
     
     override func viewDidLoad() {
         super.viewDidLoad()

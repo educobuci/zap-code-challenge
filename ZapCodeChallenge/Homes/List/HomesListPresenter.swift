@@ -20,7 +20,7 @@ class HomesListPresenter {
     
     func loadHomesList(site: SiteType) {
         loadAll {
-            let filteredList = SiteBusinessRule.filter(homesList: self.allData!, bySiteType: site)
+            let filteredList = SiteBusinessRule.filter(homesList: self.allData!, siteType: site)
             DispatchQueue.main.async {
                 self.homesListView?.showHomesList(homeData: filteredList)
             }

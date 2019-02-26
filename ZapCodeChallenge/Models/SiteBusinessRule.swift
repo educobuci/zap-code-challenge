@@ -9,18 +9,25 @@
 import Foundation
 
 class SiteBusinessRule {
-    private static let zapMinRatio: Float = 3500
+    // ZAP Constants
+    private static let zapMinRentPrice = 3500
+    private static let zapMinSalePrice = 600000
+    private static let zapMinRatio: Float = 3500.0
     private static let zapMinRatioInBounding: Float = zapMinRatio * 0.9
+    
+    // Viva Real Constants
+    private static let vivaMaxRentPrice = 4000
+    private static let vivaMaxSalePrice = 700000
     private static let vivaCondoFeeRatio: Float = 0.3 // 30%
     private static let vivaCondoFeeRatioInBounding: Float = vivaCondoFeeRatio * 1.5 // + 50%
     
-    static func filter(homesList: [Home], bySiteType: SiteType? = nil) -> [Home] {
+    static func filter(homesList: [Home], siteType: SiteType? = nil) -> [Home] {
         var rules: [(_ home:Home) -> Bool] = []
-        if let type = bySiteType {
+        if let type = siteType {
             if(type == .Zap) {
                 rules.append(filterZap)
                 rules.append(filterZapMinAreasPriceRatio)
-            } else if (bySiteType == .VivaReal) {
+            } else if (siteType == .VivaReal) {
                 rules.append(filterViva)
                 rules.append(filterVivaMaxCondoFee)
             }
@@ -33,17 +40,17 @@ class SiteBusinessRule {
     
     private static func filterZap(_ home: Home) -> Bool {
         let rentalRule = home.pricingInfos.businessType == .rental &&
-            Int(home.pricingInfos.price)! >= 3500
+            Int(home.pricingInfos.price)! >= zapMinRentPrice
         let saleRule = home.pricingInfos.businessType == .sale &&
-            Int(home.pricingInfos.price)! >= 600000
+            Int(home.pricingInfos.price)! >= zapMinSalePrice
         return rentalRule || saleRule
     }
     
     private static func filterViva(_ home: Home) -> Bool {
         let rentalRule = home.pricingInfos.businessType == .rental &&
-            Int(home.pricingInfos.price)! <= 4000
+            Int(home.pricingInfos.price)! <= vivaMaxRentPrice
         let saleRule = home.pricingInfos.businessType == .sale &&
-            Int(home.pricingInfos.price)! <= 700000
+            Int(home.pricingInfos.price)! <= vivaMaxSalePrice
         return rentalRule || saleRule
     }
     
