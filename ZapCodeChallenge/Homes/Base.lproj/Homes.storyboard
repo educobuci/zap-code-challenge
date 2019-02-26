@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wGO-wN-Jjn">
-    <device id="retina6_1" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -16,8 +16,9 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wGO-wN-Jjn" customClass="HomesViewController" customModule="ZapCodeChallenge" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1cQ-KK-FLT">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.29845789070000001" green="0.66355901959999997" blue="0.58823019269999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -33,7 +34,7 @@
             <objects>
                 <collectionViewController id="WvY-Ed-4z5" customClass="HomesListViewController" customModule="ZapCodeChallenge" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="So7-mM-71K">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="25" minimumInteritemSpacing="10" id="q6a-Wx-s3V">
@@ -43,7 +44,7 @@
                             <inset key="sectionInset" minX="5" minY="25" maxX="5" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <view key="backgroundView" contentMode="scaleToFill" id="IWc-uL-chp">
-                            <rect key="frame" x="0.0" y="-88" width="414" height="896"/>
+                            <rect key="frame" x="0.0" y="-64" width="414" height="736"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="WTX-z1-8WZ">
@@ -54,7 +55,7 @@
                         </view>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeCell" id="dMW-Q3-fgk" customClass="HomeCell" customModule="ZapCodeChallenge" customModuleProvider="target">
-                                <rect key="frame" x="29.5" y="25" width="355" height="310"/>
+                                <rect key="frame" x="29.666666666666668" y="25" width="355" height="310"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="355" height="310"/>
@@ -111,12 +112,13 @@
                     <navigationItem key="navigationItem" id="BOo-Ra-FkX">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="MiZ-Cs-yDf">
-                            <rect key="frame" x="136.5" y="7" width="141" height="30"/>
+                            <rect key="frame" x="136.66666666666666" y="7" width="140.99999999999997" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Viva Real"/>
                                 <segment title="Zap"/>
                             </segments>
+                            <color key="tintColor" red="0.29845789070000001" green="0.66355901959999997" blue="0.58823019269999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <action selector="siteChanged:" destination="WvY-Ed-4z5" eventType="valueChanged" id="83v-UK-RwR"/>
                             </connections>
@@ -136,29 +138,16 @@
             <objects>
                 <viewController id="flM-Vj-H9R" customClass="HomeDetailsViewController" customModule="ZapCodeChallenge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zJC-Bs-6qk">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bTT-Lu-Uta">
-                                <rect key="frame" x="0.0" y="88" width="414" height="300"/>
-                                <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3AF-Vm-Fu2">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="300" id="93m-It-QCK"/>
-                                            <constraint firstAttribute="width" constant="414" id="Eyd-RY-zVb"/>
-                                        </constraints>
-                                    </scrollView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="3AF-Vm-Fu2" firstAttribute="centerY" secondItem="bTT-Lu-Uta" secondAttribute="centerY" id="00e-Dy-KhC"/>
-                                    <constraint firstAttribute="height" constant="300" id="OEI-PV-X5Y"/>
-                                    <constraint firstItem="3AF-Vm-Fu2" firstAttribute="centerX" secondItem="bTT-Lu-Uta" secondAttribute="centerX" id="f19-XC-5KG"/>
-                                </constraints>
-                            </view>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="VBB-Jx-NHt">
-                                <rect key="frame" x="187.5" y="350" width="39" height="37"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" directionalLockEnabled="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="84Y-Pt-mtp">
+                                <rect key="frame" x="0.0" y="64" width="414" height="300"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="VBB-Jx-NHt">
+                                <rect key="frame" x="187.66666666666666" y="326" width="39" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </pageControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Á venda" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="laT-gX-7sf">
                                 <rect key="frame" x="16" y="400" width="131" height="20.5"/>
@@ -175,7 +164,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="51" translatesAutoresizingMaskIntoConstraints="NO" id="Otc-yc-F3H">
-                                <rect key="frame" x="18" y="513" width="378" height="50"/>
+                                <rect key="frame" x="18" y="489" width="378" height="50"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jxR-1G-M2R">
                                         <rect key="frame" x="0.0" y="0.0" width="92" height="50"/>
@@ -262,7 +251,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vila Andrade・São Paulo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZJ-hH-DVB">
-                                <rect key="frame" x="41" y="596" width="332" height="40"/>
+                                <rect key="frame" x="41" y="572" width="332" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="2q3-tX-2Qm"/>
                                     <constraint firstAttribute="width" constant="332" id="5Uw-ui-8eZ"/>
@@ -281,16 +270,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="bTT-Lu-Uta" firstAttribute="leading" secondItem="V7Q-mX-Ri4" secondAttribute="leading" id="2fl-Bg-mFj"/>
-                            <constraint firstItem="VBB-Jx-NHt" firstAttribute="centerY" secondItem="bTT-Lu-Uta" secondAttribute="centerY" constant="130.5" id="6oC-OL-85h"/>
-                            <constraint firstItem="bTT-Lu-Uta" firstAttribute="trailing" secondItem="V7Q-mX-Ri4" secondAttribute="trailing" id="TeM-Ms-VRT"/>
                             <constraint firstItem="DZJ-hH-DVB" firstAttribute="centerX" secondItem="V7Q-mX-Ri4" secondAttribute="centerX" id="Ua9-OU-o97"/>
                             <constraint firstItem="DZJ-hH-DVB" firstAttribute="top" secondItem="Otc-yc-F3H" secondAttribute="top" constant="83" id="YB5-3w-kzH"/>
                             <constraint firstItem="Otc-yc-F3H" firstAttribute="top" secondItem="V7Q-mX-Ri4" secondAttribute="top" constant="425" id="imu-1D-gly"/>
-                            <constraint firstItem="VBB-Jx-NHt" firstAttribute="centerX" secondItem="bTT-Lu-Uta" secondAttribute="centerX" id="pXQ-Rx-bWd"/>
-                            <constraint firstItem="VBB-Jx-NHt" firstAttribute="width" secondItem="bTT-Lu-Uta" secondAttribute="width" constant="-375" id="sCd-Rt-ypZ"/>
                             <constraint firstItem="Otc-yc-F3H" firstAttribute="centerX" secondItem="V7Q-mX-Ri4" secondAttribute="centerX" id="tbk-ce-Wzw"/>
-                            <constraint firstItem="bTT-Lu-Uta" firstAttribute="top" secondItem="V7Q-mX-Ri4" secondAttribute="top" id="thF-oc-kE6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="V7Q-mX-Ri4"/>
                     </view>
@@ -303,7 +286,7 @@
                         <outlet property="pageControl" destination="VBB-Jx-NHt" id="4yk-HE-cet"/>
                         <outlet property="parkingLabel" destination="id1-So-EQk" id="rDm-5w-bA8"/>
                         <outlet property="priceLabel" destination="kid-OB-MKL" id="6qZ-Kt-ViD"/>
-                        <outlet property="scrollView" destination="3AF-Vm-Fu2" id="Slf-b2-P1o"/>
+                        <outlet property="scrollView" destination="84Y-Pt-mtp" id="Lsw-pY-uIm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c5n-yd-goT" userLabel="First Responder" sceneMemberID="firstResponder"/>
