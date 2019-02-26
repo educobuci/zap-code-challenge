@@ -12,12 +12,21 @@ import SDWebImage
 class HomeDetailsViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var businessTypeLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var condoFeeLabel: UILabel!
+    @IBOutlet weak var bedroomsLabel: UILabel!
+    @IBOutlet weak var bathroomsLabels: UILabel!
+    @IBOutlet weak var parkingLabel: UILabel!
+    @IBOutlet weak var cityLabel: UILabel!
+    
     
     var home: Home! = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupImagePages()
+        self.fillInfo()
     }
     
     func setupImagePages() {
@@ -39,5 +48,17 @@ class HomeDetailsViewController: UIViewController, UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let pageNumber = Int(self.scrollView.contentOffset.x / self.scrollView.frame.width)
         self.pageControl.currentPage = pageNumber
+    }
+    
+    func fillInfo() {
+        businessTypeLabel.text = home.pricingInfos.businessType == .sale ? Strings.FOR_SALE : Strings.FOR_RENT
+        if let condoFee = home.pricingInfos.monthlyCondoFee {
+            condoFeeLabel.text = Strings.formatBRL(condoFee)
+        }
+        bedroomsLabel.text = "\(home.bedrooms)"
+        bathroomsLabels.text = "\(home.bathrooms)"
+        if let spaces = home.parkingSpaces {
+            parkingLabel.text = "\(spaces)"
+        }
     }
 }
