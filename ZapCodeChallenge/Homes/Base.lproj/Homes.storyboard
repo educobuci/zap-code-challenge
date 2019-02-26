@@ -200,8 +200,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R$ 1.000.000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kid-OB-MKL">
-                                <rect key="frame" x="16" y="393.33333333333331" width="206.66666666666666" height="40"/>
+                                <rect key="frame" x="16" y="393.33333333333331" width="244" height="40"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="244" id="Ogf-VW-7tD"/>
                                     <constraint firstAttribute="height" constant="40" id="ZIv-NR-zJ2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="33"/>
