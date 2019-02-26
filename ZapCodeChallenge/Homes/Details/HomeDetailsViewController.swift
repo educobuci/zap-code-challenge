@@ -60,5 +60,10 @@ class HomeDetailsViewController: UIViewController, UIScrollViewDelegate {
         if let spaces = home.parkingSpaces {
             parkingLabel.text = "\(spaces)"
         }
+        if let neighborhood = home.address.neighborhood, let city = home.address.city {
+            if(!neighborhood.isEmpty && !city.isEmpty) {
+                cityLabel.text = "\(neighborhood)・\(city)"
+            }
+        }
     }
 }
