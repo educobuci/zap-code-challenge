@@ -155,9 +155,8 @@
                                 <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="R$ 1.000.000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kid-OB-MKL">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R$ 1.000.000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kid-OB-MKL">
                                 <rect key="frame" x="16" y="424.5" width="378" height="39.5"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="33"/>
                                 <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -269,11 +268,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="VBB-Jx-NHt" firstAttribute="top" secondItem="V7Q-mX-Ri4" secondAttribute="top" constant="252" id="IkV-mF-hv1"/>
+                            <constraint firstItem="Otc-yc-F3H" firstAttribute="leading" secondItem="V7Q-mX-Ri4" secondAttribute="leading" constant="18" id="Rq8-fY-DEG"/>
                             <constraint firstItem="DZJ-hH-DVB" firstAttribute="width" secondItem="zJC-Bs-6qk" secondAttribute="width" id="UJm-K2-10z"/>
                             <constraint firstItem="DZJ-hH-DVB" firstAttribute="centerX" secondItem="V7Q-mX-Ri4" secondAttribute="centerX" id="Ua9-OU-o97"/>
+                            <constraint firstItem="kid-OB-MKL" firstAttribute="leading" secondItem="V7Q-mX-Ri4" secondAttribute="leading" constant="16" id="Xa1-Ht-cPh"/>
                             <constraint firstItem="DZJ-hH-DVB" firstAttribute="top" secondItem="Otc-yc-F3H" secondAttribute="top" constant="83" id="YB5-3w-kzH"/>
+                            <constraint firstItem="V7Q-mX-Ri4" firstAttribute="trailing" secondItem="Otc-yc-F3H" secondAttribute="trailing" constant="18" id="ciZ-Sa-rqs"/>
+                            <constraint firstItem="kid-OB-MKL" firstAttribute="top" secondItem="V7Q-mX-Ri4" secondAttribute="top" constant="336.5" id="gjt-kr-lNr"/>
                             <constraint firstItem="Otc-yc-F3H" firstAttribute="top" secondItem="V7Q-mX-Ri4" secondAttribute="top" constant="425" id="imu-1D-gly"/>
                             <constraint firstItem="VBB-Jx-NHt" firstAttribute="centerX" secondItem="V7Q-mX-Ri4" secondAttribute="centerX" id="nqW-ey-Wgv"/>
+                            <constraint firstItem="V7Q-mX-Ri4" firstAttribute="trailing" secondItem="kid-OB-MKL" secondAttribute="trailing" constant="20" id="tJ5-Lo-qNC"/>
                             <constraint firstItem="Otc-yc-F3H" firstAttribute="centerX" secondItem="V7Q-mX-Ri4" secondAttribute="centerX" id="tbk-ce-Wzw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="V7Q-mX-Ri4"/>
