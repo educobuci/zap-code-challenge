@@ -18,4 +18,5 @@ struct PrincingInfos: Decodable {
     let price: String
     let businessType: BusinessType
     let monthlyCondoFee: String?
+    let rentalTotalPrice: String?
 }

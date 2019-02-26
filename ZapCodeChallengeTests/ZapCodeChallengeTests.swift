@@ -12,12 +12,12 @@ import XCTest
 class ZapCodeChallengeTests: XCTestCase {
     // Zap Specifics
     func testZapMinRentValue() {
-        let rent3k = Fixtures.genHomeWith(businessType: .rental, price: "3000")
-        let rent3_5k = Fixtures.genHomeWith(businessType: .rental, price: "3500")
+        let rent3k = Fixtures.genHomeWith(businessType: .rental, rentalTotalPrice: "3000")
+        let rent3_5k = Fixtures.genHomeWith(businessType: .rental, rentalTotalPrice: "3500")
         let homesList = [rent3k, rent3_5k]
         let filtered = SiteBusinessRule.filter(homesList: homesList, siteType: .Zap)
         XCTAssertEqual(filtered.count, 1)
-        XCTAssertEqual(filtered.first!.pricingInfos.price, "3500")
+        XCTAssertEqual(filtered.first!.pricingInfos.rentalTotalPrice!, "3500")
     }
     func testZapMinSaleValue() {
         let sale600k = Fixtures.genHomeWith(businessType: .sale, price: "600000")
@@ -28,12 +28,12 @@ class ZapCodeChallengeTests: XCTestCase {
         XCTAssertEqual(filtered.first!.pricingInfos.price, "600000")
     }
     func testVivaMaxRentValue() {
-        let rent4k = Fixtures.genHomeWith(businessType: .rental, price: "4000")
-        let rent5k = Fixtures.genHomeWith(businessType: .rental, price: "5000")
+        let rent4k = Fixtures.genHomeWith(businessType: .rental, rentalTotalPrice: "4000")
+        let rent5k = Fixtures.genHomeWith(businessType: .rental, rentalTotalPrice: "5000")
         let homesList = [rent4k, rent5k]
         let filtered = SiteBusinessRule.filter(homesList: homesList, siteType: .VivaReal)
         XCTAssertEqual(filtered.count, 1)
-        XCTAssertEqual(filtered.first!.pricingInfos.price, "4000")
+        XCTAssertEqual(filtered.first!.pricingInfos.rentalTotalPrice!, "4000")
     }
     func testVivaMaxSaleValue() {
         let sale700k = Fixtures.genHomeWith(businessType: .sale, price: "700000")
@@ -74,9 +74,9 @@ class ZapCodeChallengeTests: XCTestCase {
         XCTAssertEqual(filtered.first!.address.geoLocation?.location?.lon, ZapBoundingBox.maxlon)
     }
     func testVivaCondoMaxValue() {
-        let rentCondo30Percent = Fixtures.genHomeWith(businessType: .rental, price: "1000", condoFee: "300")
-        let rentCondo20Percent = Fixtures.genHomeWith(businessType: .rental, price: "1000", condoFee: "200")
-        let rentCondoInvalid = Fixtures.genHomeWith(businessType: .rental, price: "1000", condoFee: "")
+        let rentCondo30Percent = Fixtures.genHomeWith(businessType: .rental, condoFee: "300", rentalTotalPrice: "1000")
+        let rentCondo20Percent = Fixtures.genHomeWith(businessType: .rental, condoFee: "200", rentalTotalPrice: "1000")
+        let rentCondoInvalid = Fixtures.genHomeWith(businessType: .rental, condoFee: "", rentalTotalPrice: "1000")
         let homesList = [rentCondo30Percent, rentCondo20Percent, rentCondoInvalid]
         let filtered = SiteBusinessRule.filter(homesList: homesList, siteType: .VivaReal)
         XCTAssertEqual(filtered.count, 2)
@@ -86,8 +86,8 @@ class ZapCodeChallengeTests: XCTestCase {
     func testVivaCondoMaxValueInBounding() {
         let inLocation = GeoLocation(precision: "", location: Location(lon: ZapBoundingBox.maxlon, lat: ZapBoundingBox.minlat))
         let outLocation = GeoLocation(precision: "", location: Location(lon: ZapBoundingBox.maxlon + 1, lat: ZapBoundingBox.minlat - 1))
-        let rentCondo44PercentIn = Fixtures.genHomeWith(businessType: .rental, price: "1000", geoLocation: inLocation, condoFee: "440")
-        let rentCondo44PercentOut = Fixtures.genHomeWith(businessType: .rental, price: "1000", geoLocation: outLocation, condoFee: "440")
+        let rentCondo44PercentIn = Fixtures.genHomeWith(businessType: .rental, geoLocation: inLocation, condoFee: "440", rentalTotalPrice: "1000")
+        let rentCondo44PercentOut = Fixtures.genHomeWith(businessType: .rental, geoLocation: outLocation, condoFee: "440", rentalTotalPrice: "1000")
         let homesList = [rentCondo44PercentIn, rentCondo44PercentOut]
         let filtered = SiteBusinessRule.filter(homesList: homesList, siteType: .VivaReal)
         XCTAssertEqual(filtered.count, 1)

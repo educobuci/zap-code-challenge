@@ -15,7 +15,9 @@ class Fixtures {
         businessType: BusinessType = .rental,
         price: String = "",
         geoLocation: GeoLocation = defaultGeoLocation,
-        condoFee: String = "") -> Home {
+        condoFee: String = "",
+        rentalTotalPrice: String = ""
+        ) -> Home {
         return Home (
             usableAreas: usableAreas,
             id: "",
@@ -25,7 +27,7 @@ class Fixtures {
             bathrooms: 1,
             bedrooms: 1,
             pricingInfos: PrincingInfos(
-                yearlyIptu: nil, price: price, businessType: businessType, monthlyCondoFee: condoFee)
+                yearlyIptu: nil, price: price, businessType: businessType, monthlyCondoFee: condoFee, rentalTotalPrice: rentalTotalPrice)
         )
     }
     private static let defaultGeoLocation = GeoLocation(precision: "ROOFTOP", location: Location(lon: 1, lat: 1))

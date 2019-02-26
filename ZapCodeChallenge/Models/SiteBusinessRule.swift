@@ -40,7 +40,7 @@ class SiteBusinessRule {
     
     private static func filterZap(_ home: Home) -> Bool {
         let rentalRule = home.pricingInfos.businessType == .rental &&
-            Int(home.pricingInfos.price)! >= zapMinRentPrice
+            Int(home.pricingInfos.rentalTotalPrice!)! >= zapMinRentPrice
         let saleRule = home.pricingInfos.businessType == .sale &&
             Int(home.pricingInfos.price)! >= zapMinSalePrice
         return rentalRule || saleRule
@@ -48,7 +48,7 @@ class SiteBusinessRule {
     
     private static func filterViva(_ home: Home) -> Bool {
         let rentalRule = home.pricingInfos.businessType == .rental &&
-            Int(home.pricingInfos.price)! <= vivaMaxRentPrice
+            Int(home.pricingInfos.rentalTotalPrice!)! <= vivaMaxRentPrice
         let saleRule = home.pricingInfos.businessType == .sale &&
             Int(home.pricingInfos.price)! <= vivaMaxSalePrice
         return rentalRule || saleRule
@@ -84,7 +84,7 @@ class SiteBusinessRule {
         }
         if let condoFee = Float(home.pricingInfos.monthlyCondoFee ?? "") {
             if (home.pricingInfos.businessType == .rental) {
-                let price = Float(home.pricingInfos.price)!
+                let price = Float(home.pricingInfos.rentalTotalPrice!)!
                 return condoFee / price < ratio
             }
         }
