@@ -19,6 +19,7 @@ class ZapCodeChallengeTests: XCTestCase {
         XCTAssertEqual(filtered.count, 1)
         XCTAssertEqual(filtered.first!.pricingInfos.rentalTotalPrice!, "3500")
     }
+    
     func testZapMinSaleValue() {
         let sale600k = Fixtures.genHomeWith(businessType: .sale, price: "600000")
         let sale100k = Fixtures.genHomeWith(businessType: .sale, price: "100000")
@@ -27,6 +28,7 @@ class ZapCodeChallengeTests: XCTestCase {
         XCTAssertEqual(filtered.count, 1)
         XCTAssertEqual(filtered.first!.pricingInfos.price, "600000")
     }
+    
     func testVivaMaxRentValue() {
         let rent4k = Fixtures.genHomeWith(businessType: .rental, rentalTotalPrice: "4000")
         let rent5k = Fixtures.genHomeWith(businessType: .rental, rentalTotalPrice: "5000")
@@ -35,6 +37,7 @@ class ZapCodeChallengeTests: XCTestCase {
         XCTAssertEqual(filtered.count, 1)
         XCTAssertEqual(filtered.first!.pricingInfos.rentalTotalPrice!, "4000")
     }
+    
     func testVivaMaxSaleValue() {
         let sale700k = Fixtures.genHomeWith(businessType: .sale, price: "700000")
         let sale800k = Fixtures.genHomeWith(businessType: .sale, price: "800000")
@@ -43,6 +46,7 @@ class ZapCodeChallengeTests: XCTestCase {
         XCTAssertEqual(filtered.count, 1)
         XCTAssertEqual(filtered.first!.pricingInfos.price, "700000")
     }
+    
     func testLonTatZero() {
         let zeroCoords = Fixtures.genHomeWith(geoLocation: GeoLocation(precision: "", location: Location(lon: 0, lat: 0)))
         let oneCoords = Fixtures.genHomeWith()
@@ -53,6 +57,7 @@ class ZapCodeChallengeTests: XCTestCase {
         XCTAssertEqual(location?.lat!, 1)
         XCTAssertEqual(location?.lon!, 1)
     }
+    
     func testZapMinUsableAreasValue() {
         let saleAreas180x600k = Fixtures.genHomeWith(usableAreas: 180, businessType: .sale, price: "600000")
         let saleAreas150x600k = Fixtures.genHomeWith(usableAreas: 150, businessType: .sale, price: "600000")
@@ -63,6 +68,7 @@ class ZapCodeChallengeTests: XCTestCase {
         XCTAssertEqual(filtered[0].usableAreas, 150)
         XCTAssertEqual(filtered[1].usableAreas, 0)
     }
+    
     func testZapMinUsableAreasValueInBounding() {
         let inLocation = GeoLocation(precision: "", location: Location(lon: ZapBoundingBox.maxlon, lat: ZapBoundingBox.minlat))
         let outLocation = GeoLocation(precision: "", location: Location(lon: ZapBoundingBox.maxlon + 1, lat: ZapBoundingBox.minlat - 1))
@@ -73,6 +79,7 @@ class ZapCodeChallengeTests: XCTestCase {
         XCTAssertEqual(filtered.count, 1)
         XCTAssertEqual(filtered.first!.address.geoLocation?.location?.lon, ZapBoundingBox.maxlon)
     }
+    
     func testVivaCondoMaxValue() {
         let rentCondo30Percent = Fixtures.genHomeWith(businessType: .rental, condoFee: "300", rentalTotalPrice: "1000")
         let rentCondo20Percent = Fixtures.genHomeWith(businessType: .rental, condoFee: "200", rentalTotalPrice: "1000")
@@ -83,6 +90,7 @@ class ZapCodeChallengeTests: XCTestCase {
         XCTAssertEqual(filtered[0].pricingInfos.monthlyCondoFee, "200")
         XCTAssertEqual(filtered[1].pricingInfos.monthlyCondoFee, "")
     }
+    
     func testVivaCondoMaxValueInBounding() {
         let inLocation = GeoLocation(precision: "", location: Location(lon: ZapBoundingBox.maxlon, lat: ZapBoundingBox.minlat))
         let outLocation = GeoLocation(precision: "", location: Location(lon: ZapBoundingBox.maxlon + 1, lat: ZapBoundingBox.minlat - 1))
