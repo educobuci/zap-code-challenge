@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -25,7 +26,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hQv-Vr-cZO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-61" y="386"/>
+            <point key="canvasLocation" x="-549" y="622"/>
         </scene>
         <!--Homes List View Controller-->
         <scene sceneID="3hl-FS-u75">
@@ -123,11 +124,41 @@
                     </navigationItem>
                     <connections>
                         <outlet property="loadingView" destination="WTX-z1-8WZ" id="zkK-HQ-67t"/>
+                        <segue destination="flM-Vj-H9R" kind="show" identifier="details" id="dVl-jd-mBu"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AOq-r8-BFG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="779.71014492753625" y="385.71428571428572"/>
+            <point key="canvasLocation" x="410" y="621"/>
+        </scene>
+        <!--Home Details View Controller-->
+        <scene sceneID="11e-a2-8VT">
+            <objects>
+                <viewController id="flM-Vj-H9R" customClass="HomeDetailsViewController" customModule="ZapCodeChallenge" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zJC-Bs-6qk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3AF-Vm-Fu2">
+                                <rect key="frame" x="0.0" y="88" width="414" height="300"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="VBB-Jx-NHt">
+                                <rect key="frame" x="188" y="350" width="39" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="V7Q-mX-Ri4"/>
+                    </view>
+                    <connections>
+                        <outlet property="pageControl" destination="VBB-Jx-NHt" id="4yk-HE-cet"/>
+                        <outlet property="scrollView" destination="3AF-Vm-Fu2" id="Slf-b2-P1o"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c5n-yd-goT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1285.5072463768117" y="620.75892857142856"/>
         </scene>
     </scenes>
     <resources>

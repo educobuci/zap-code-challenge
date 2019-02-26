@@ -25,6 +25,7 @@ class HomesListViewController: UICollectionViewController {
     }
     private var homeData: [Home]?
     private var presenter: HomesListPresenter?
+    var selectedHome: Home?
     
     override func viewDidLoad() {
         let url = URL(string: Config.serviceURL)!
@@ -64,6 +65,17 @@ class HomesListViewController: UICollectionViewController {
         }
         cell.addressLabel.text = formatAddress(home.address)
         return cell
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.selectedHome = self.homeData![indexPath.item]
+        performSegue(withIdentifier: "details", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let detailsController = segue.destination as? HomeDetailsViewController {
+            detailsController.home = self.selectedHome
+        }
     }
     
     private func formatCharacteristics(_ home: Home) -> String {
