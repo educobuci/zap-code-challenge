@@ -12,7 +12,7 @@ class RestService {
     static func loadList<T: Decodable>(url: URL, onSuccess: @escaping ([T]) -> Void, onError: ((Error) -> Void)?) {
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             if error != nil {
-                print(error!.localizedDescription)
+                onError?(error!)
             }
             guard let data = data else { return }
             do {

@@ -12,25 +12,36 @@ import SDWebImage
 private let reuseIdentifier = "HomeCell"
 
 class HomesListViewController: UICollectionViewController {
+    @IBOutlet weak var errorView: UIView!
     @IBOutlet weak var loadingView: UIActivityIndicatorView!
+    
     @IBAction func siteChanged(_ sender: UISegmentedControl) {
         if(sender.selectedSegmentIndex == 0) {
-            self.presenter?.loadHomesList(site: .VivaReal)
+            currentSite = .VivaReal
         } else {
-            self.presenter?.loadHomesList(site: .Zap)
+            currentSite = .Zap
         }
+        self.presenter?.loadHomesList(site: currentSite)
         let topBarHeight = UIApplication.shared.statusBarFrame.size.height +
             (self.navigationController?.navigationBar.frame.height ?? 0.0)
         collectionView.setContentOffset(CGPoint(x: 0, y: -topBarHeight), animated: true)
     }
+    
+    @IBAction func retryButtonTouch(_ sender: Any) {
+        self.loadingView.startAnimating()
+        self.errorView.isHidden = true
+        self.presenter?.loadHomesList(site: currentSite)
+    }
+    
     private var homeData: [Home]?
     private var presenter: HomesListPresenter?
     var selectedHome: Home?
+    var currentSite: SiteType = .VivaReal
     
     override func viewDidLoad() {
         let url = URL(string: Config.serviceURL)!
         self.presenter = HomesListPresenter(self, url: url)
-        self.presenter?.loadHomesList(site: .VivaReal)
+        self.presenter?.loadHomesList(site: currentSite)
     }
     
     func showHomesList(homeData: [Home]) {
@@ -40,8 +51,7 @@ class HomesListViewController: UICollectionViewController {
     }
     
     func showError(error: Error) {
-        // TODO: Implement the error hading
-        print(error)
+        errorView.isHidden = false
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

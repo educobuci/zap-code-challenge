@@ -20,22 +20,29 @@ class HomeDetailsViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var parkingLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     
-    
     var home: Home! = nil
+    let imageHeight = CGFloat(300)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidLayoutSubviews() {
         self.setupImagePages()
         self.fillInfo()
     }
     
     func setupImagePages() {
+        self.scrollView.frame.size.width = self.view.frame.width
+        print(self.view.frame.width)
+        self.scrollView.frame.size.height = imageHeight
         self.pageControl.numberOfPages = home.images.count
         for (index, image) in home.images.enumerated() {
             let frame = CGRect(x: (CGFloat(index) * self.scrollView.frame.width), y: 0,
                                width: self.scrollView.frame.width,
                                height: self.scrollView.frame.height)
             let imageView = UIImageView(frame: frame)
+            
             imageView.sd_setImage(with: URL(string: image))
             self.scrollView.addSubview(imageView)
         }

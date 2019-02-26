@@ -34,7 +34,10 @@ class HomesListPresenter {
             RestService.loadList(
                 url: self.serviceUrl,
                 onSuccess: { (data: [Home]) in self.allData = data; callback?() },
-                onError: self.homesListView?.showError)
+                onError: { (error: Error) in
+                    DispatchQueue.main.async { self.homesListView?.showError(error: error) }
+                }
+            )
         }
     }
 }
