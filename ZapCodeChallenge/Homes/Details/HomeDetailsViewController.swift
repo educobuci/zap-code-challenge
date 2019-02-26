@@ -50,6 +50,7 @@ class HomeDetailsViewController: UIViewController, UIScrollViewDelegate {
             width: CGFloat(home.images.count) * self.scrollView.frame.width,
             height: self.scrollView.frame.height)
         self.scrollView.delegate = self
+        self.priceLabel.text = Strings.formatBRL(home.pricingInfos.price)
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
