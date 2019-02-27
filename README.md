@@ -19,7 +19,7 @@ pod install
 open ZapCodeChallenge.xcworkspace
 ```
 
-## Estrutura do códio
+## Estrutura do código
 
 Na pasta `ZapCodeChallenge` se encontra o código fonte principal, separado em sub-pastas.
 Na pasta `ZapCodeChallengeTests` se encontram os testes unitários.
